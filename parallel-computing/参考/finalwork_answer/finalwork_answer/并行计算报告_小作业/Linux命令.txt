@@ -1,0 +1,25 @@
+Linux 命令行：
+
+
+
+ls：浏览当前目录下的文件
+mkdir xx ：创建一个叫xx的文件夹
+rz：上传文件
+sz xxx：下载名为xxx的文件
+g++ -fopenmp xxx.cpp -o y: 以g++（Linux）编译器的方式 ，以fopenmp来编译xxx这个文件，并生成一个叫y的文件
+	类似有：mpic++ Reduction.cpp -o reduction
+	 g++ -fopenmp mandelbrot.cpp -lglut -lGL -lGLU -o madelbrot
+	mpicc parallelio.c -o PIO
+
+./y: 运行当前目录下的y文件
+rm xxx： 删除xxx文件，y为确认
+vim xx：运行文件
+	i 编辑模式
+	：然后输入wq：退出编辑模式
+Ctrl+z：退出当前程序
+cd .. 退出当前目录
+./reduction matrix -t -p -d   ：matrix 是导入的文件，-t不计较错误，-p不知道，-d生成文件
+./PIO data.txt
+ mkdir xx  ：新建一个叫xx的文件夹
+mv x y 将x移动到y文件夹下
+mv xx yy 将xx命名为yy

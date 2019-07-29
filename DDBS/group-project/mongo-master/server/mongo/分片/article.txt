@@ -1,0 +1,29 @@
+
+use mongo;
+
+sh.removeShardTag("rs1", "science");
+//sh.removeShardTag("rs2", "science");
+sh.removeShardTag("rs2", "technology");
+
+sh.addShardTag("rs1", "science");
+//sh.addShardTag("rs2", "science");
+sh.addShardTag("rs2", "technology");
+
+
+sh.disableBalancing("mongo.article");
+
+db.article.drop();
+
+db.createCollection("article");
+
+sh.enableSharding("mongo");
+
+sh.shardCollection("mongo.article",{ "category": 1, "_id": 1});
+
+sh.addTagRange("mongo.article",{ "category" : "science" , "_id" : MinKey},{ "category" : "science" , "_id" : MaxKey},"science");
+sh.addTagRange("mongo.article",{ "category" : "technology", "_id" : MinKey },{ "category" : "technology", "_id" : MaxKey },"technology");
+//sh.addTagRange("mongo.article",{ "category" : "science", "_id" : MinKey },{ "category" : "science", "_id" : MaxKey },"technology");
+
+sh.enableBalancing("mongo.article");
+
+sh.status();

@@ -1,0 +1,26 @@
+
+//use mongo
+//db.dropDatabase()
+use mongo
+
+//sh.removeShardTag("rs1", "Beijing");
+//sh.removeShardTag("rs2", "Hong Kong");
+
+//sh.addShardTag("rs1", "Beijing");
+/sh.addShardTag("rs2", "Hong Kong");
+
+
+sh.disableBalancing("mongo.read");
+
+db.read.drop();
+
+db.createCollection("read");
+
+sh.enableSharding("mongo");
+
+sh.shardCollection("mongo.read",{ "region": 1, "_id": 1});
+
+sh.addTagRange("mongo.read",{ "region" : "Beijing" , "_id" : MinKey},{ "region" : "Beijing" , "_id" : MaxKey},"Beijing");
+sh.addTagRange("mongo.read",{ "region" : "Hong Kong", "_id" : MinKey },{ "region" : "Hong Kong", "_id" : MaxKey },"Hong Kong");
+
+sh.enableBalancing("mongo.read");

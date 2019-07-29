@@ -1,0 +1,37 @@
+{% extends "common/base.html" %}
+{% block title %}阅读系统{% endblock %}
+
+{% block navbar %}
+    <div class="navbar navbar-fixed-top">
+        <!-- ... -->
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="card" style="width: 30rem;margin: 50px auto;">
+        <div class="card-header">用户信息</div>
+        <div class="card-body">
+            <h2 class="card-title" style="margin-bottom: 10px">{{ user.name }}</h2>
+
+            <p class="card-text"><strong>gender：</strong> {{ user.gender }}</p>
+            <p class="card-text"><strong>email：</strong> {{ user.email }}</p>
+            <p class="card-text"><strong>phone：</strong> {{ user.phone }}</p>
+            <p class="card-text"><strong>dept：</strong> {{ user.dept }}</p>
+            <p class="card-text"><strong>grade：</strong> {{ user.grade }}</p>
+            <p class="card-text"><strong>language：</strong> {{ user.language }}</p>
+            <p class="card-text"><strong>region：</strong> {{ user.region }}</p>
+            <p class="card-text"><strong>role：</strong> {{ user.role }}</p>
+            <p class="card-text"><strong>preferTags：</strong> {{ user.preferTags }}</p>
+            <p class="card-text"><strong>obtainedCredits：</strong> {{ user.obtainedCredits }}</p>
+            <p class="card-text"><strong>timestamp：</strong> {{ user.timestamp }}</p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block styles %}
+    <style>
+        .card-text {
+            margin-left: 20px;
+        }
+    </style>
+{% endblock %}

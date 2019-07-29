@@ -1,0 +1,50 @@
+We adopt a dynamic programming based approach instead, 
+calculating optimal plans for joining table sets out of optimal plans for joining subsets
+动态编程，通过计算子集的最优计划，从中得出全集的最优计划
+
+
+问题的定义：
+An MPQ problem is defined by a query Q, a parameter space X, and a set of cost metrics M. 
+Any PPS for Q is a solution to the MPQ problem--问题的解决
+
+分段线性开销函数
+The cost function is piecewise-linear (PWL) if the parameter space can be partitioned 
+into convex polytopes such that c(p, x) is linear in each polytope
+
+
+第一步：
+RRPA first calculates PPSs and RMs for each base table q ∈ Q; 
+it considers all possible scan plans for each base table and prunes out plans 
+that are dominated in the entire parameter space
+
+After the base tables, RRPA treats table sets in ascending order of cardinality.第七页，这句话什么意思
+
+剪枝的整个过程
+Every plan is associated with a RR in the parameter space for which no alternative plan is known
+ that has equivalent or dominant cost. The RR of a newly generated plan is initialized by the full parameter space.
+ It is reduced during a series of comparisons between the newly generated plan and the old plans joining the same tables.
+ At every comparison, the RR of the new plan is reduced by the points in the parameter space for which an 
+old plan dominates the new plan. If the RR of the new plan becomes empty, it is discarded. 
+Otherwise, the new plan is inserted. Before inserting the new plan, 
+the RRs of the old plans are reduced by regions in which they are dominated by the new plan. 
+Old plans with empty RRs are discarded. The following example illustrates the pruning method.
+
+第八页是整个算法的过程。
+
+最后的实验结果和评价： 
+For same number of tables and parameters, our optimization times are higher 
+but still comparable to optimization times of single-objective PQ algorithms 
+that are often in the order of several seconds as well
+
+用启发性的算法
+通过近似的方式，用线性开销函数来近似任意形式的开销函数
+
+Each PWL function is therefore represented as a set of linear functions; 
+each linear function is characterized by the parameter space region to which it applies (attribute reg in Figure 9) 
+and a weight vector (attribute w in Figure 9) with one weight per parameter together 
+with the scalar base cost (b in Figure 9) that define the linear function.
+
+线性函数
+
+
+

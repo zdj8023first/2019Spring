@@ -1,0 +1,32 @@
+第一页： 标题，小组成员基本信息
+
+第二页： 问题description
+
+第三页： 问题motivation
+
+第四页： 相关已经存在的解决方案 state-of-the-art技术
+	虚拟机 vs Docker
+	HDFS
+	mysql vs MongoDB
+	redis(选用）
+	bootstrap+jQuery快速搭建个前端
+	python实现下后端逻辑 
+
+第五页： 拟采用的技术
+	linux下开发
+	docker
+	hadoop-hdfs
+	MongoDB
+	bootstrap+jQuery
+	python
+
+第六页： 系统架构
+	就那张图，用visio或者截图做出来
+	
+
+第七页： 预计解决的问题
+	项目基本要求实现
+	扩展要求视项目进展选择实现
+
+
+第八页： thank you for attention

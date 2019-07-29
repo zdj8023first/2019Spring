@@ -1,0 +1,109 @@
+{% extends "common/base.html" %}
+{% block title %}阅读系统{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- Content here -->
+                <form class="form-signin" action="{{ url_for('.login') }}" method="post">
+                    <h2 class="form-signin-heading">用户登录</h2>
+                    <label for="inputEmail" class="sr-only">用户名</label>
+                    <input type="text" id="inputEmail" class="form-control" name="username" placeholder="用户名" required
+                           autofocus>
+                    <label for="inputPassword" class="sr-only">密码</label>
+                    <input type="password" id="inputPassword" class="form-control" name="password" placeholder="密码"
+                           required>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="remember-me" name="remember"> 记住我
+                        </label>
+                    </div>
+                    {% if message %}
+                        <div class="alert alert-danger" role="alert">
+                            <button type="button" class="close" data-dismiss="alter">×</button>
+                            {{ message }}
+                        </div>
+                    {% endif %}
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block styles %}
+    <style>
+        .selector-for-some-widget {
+            box-sizing: content-box;
+        }
+    </style>
+
+    <style lang="scss" scoped>
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #eee;
+        }
+
+        .form-signin {
+            /*max-width: 330px;*/
+            /*padding: 15px;*/
+            /*margin: 0 auto;*/
+            /*box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);*/
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            background-clip: padding-box;
+            margin: 180px auto;
+            width: 450px;
+            padding: 35px 35px 15px 35px;
+            background: #fff;
+            border: 1px solid #eaeaea;
+            box-shadow: 0 0 25px #cac6c6;
+        }
+
+        .form-signin .form-signin-heading {
+            margin: 0px auto 40px auto;
+            text-align: center;
+            color: #505458;
+        }
+
+        .form-signin .checkbox {
+            margin-bottom: 10px;
+        }
+
+        .form-signin .checkbox {
+            font-weight: normal;
+        }
+
+        .form-signin .form-control {
+            position: relative;
+            height: auto;
+            margin: 0 0 20px 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+
+        .form-signin input[type="email"] {
+            /*margin-bottom: -1px;*/
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+    </style>
+{% endblock %}

@@ -1,0 +1,40 @@
+version: '3.1'
+# MongoDB 一键配置启动
+
+services:
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo_bj
+    ports:
+      - 27017:27017
+    restart: always
+    volumes:
+      - ./db:/data/db
+      # environment:
+      #  MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      #  MONGO_INITDB_ROOT_PASSWORD: mongoadmin
+
+  mongo-express:
+    links:
+      - mongo
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_OPTIONS_EDITORTHEME: 3024-night
+      #ME_CONFIG_BASICAUTH_USERNAME: mongoexpress
+      #ME_CONFIG_BASICAUTH_PASSWORD: mongoexpress
+      #ME_CONFIG_MONGODB_ADMINUSERNAME: mongoadmin
+      #ME_CONFIG_MONGODB_ADMINPASSWORD: mongoadmin
+
+  redis:
+    image: redis
+    container_name: redis_bj
+    restart: always
+    command: redis-server
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis-db:/data

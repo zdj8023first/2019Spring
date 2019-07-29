@@ -1,0 +1,13 @@
+version: '3.1'
+# MongoDB 一键配置启动
+
+services:
+
+  redis:
+    image: redis
+    container_name: redis_hk
+    command: redis-server
+    ports:
+      - "6380:6379"
+    volumes:
+      - ./data:/data
